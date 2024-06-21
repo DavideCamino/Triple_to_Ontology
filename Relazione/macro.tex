@@ -1,7 +1,20 @@
+\usepackage{listings}
 \usepackage{minted}
-\usepackage{listing}
+\usepackage{xspace}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[none]{hyphenat}
 
-\newcommand{\cduce}{$CDuce$}
-\newcommand{\addCode}{
-	
-}
+\sloppy
+
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+
+\newcommand{\cduce}{$\mathbb{C}$Duce\xspace}
+\newcommand{\addCode}[4] {
+	\begin{listing}[H]
+		\caption{#1}
+		\label{#2}
+	\end{listing}
+	\vspace{-.5cm}
+	\inputminted[tabsize=2, linenos, breaklines, bgcolor=bg]{#3}{"#4"}}

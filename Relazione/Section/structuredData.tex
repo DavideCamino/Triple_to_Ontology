@@ -1,0 +1,20 @@
+\section{Ontologia di arrivo}
+	Descriviamo brevemente come sarà fatta l'ontologia che vorremmo ottenere.
+	\subsection{Struttura}
+		L'ontologia che vogliamo creare per dare una struttura formale ai dati grezzi sarà costituita, come ogni ontologia da classi, individui e relazioni.
+		\subsubsection{Classi}
+			L'ontologia che vogliamo ottenere deve rappresentare 2 classi fondamentali:
+			\begin{itemize}
+				\item Persone: la classe che contiene i soggetti delle nostre triple, rappesenta il concetto di persona e tutte le caratteristiche che derivano dall'appartenere alla specie Homo Sapiens Sapiens;
+				\item Complementi: questa classe rappresenta gli oggetti su cui sono svolte le azioni. è una classe estremamente eterogenea dato che non conterrà solamente oggetti fisici, ma anche astratti quali idee, concetti e pensieri
+			\end{itemize}
+		\subsubsection{Individui}
+			Gli individui apparterranno a una delle due classi definite precedentemente, vogliamo fare in modo che se due triple di partenza parlano dello stesso soggetto o dello stesso oggetto questo sia rappesentato da un solo individuo anche nell'ontologia che creiamo. Ad esempio:
+			\begin{itemize}
+				\item Crick, Franklin e Watson scoprirono la struttura del DNA, da queste 3 affermazioni vorremmo ottenere 3 individui di classe Persona e un solo individuo di classe Complemento;
+				\item Albert Einstein scoprì l'effetto fotoelettrico e ideò la teoria della relativià, da queste 2 triple vorremmo ricavare 2 complementi ma un solo soggetto.
+			\end{itemize}
+		\subsubsection{Relazioni}
+			Per ogni tripla vogliamo aggiungere una relazione alla nostra ontologia che colleghi il soggetto al complemento mediante la psecifica azione; Ovviamente vorremmo collegare più soggetti allo stesso complemento (anche mediante azioni differenti) e collegare più complementi allo stesso soggetto.
+	\subsubsection{Formalismo}
+		Esistono diversi modi per esprimere struttura e contenuto di un'ontologia, alcuni formalismi sono più espressivi di altri e pagano questo aumento di esperessività con una complessità maggiore sia per quanto riguarda la struttura stessa dell'ontologia che per ciò che riguarda gli algoritmi che faranno inferenza e/o reasioning sui dati contenuti nell'ontologia.

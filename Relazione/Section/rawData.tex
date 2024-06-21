@@ -1,4 +1,6 @@
 \section{Dati di partenza}
 	Per tradurre i dati grezzi utilizzeremo \cduce, un linguaggio di programmazione sviluppato appositamente per manipolare documenti XML.  Per questa ragione le triple che andremo a tradurre dovranno essere salvate in formato XML, presentiamo un breve esempio del documento che andremo a tradurre per esemplificarne la struttura:
-	%\addCode{Lst: Dati Grezzi}{lst:raw_data}{XML}{Code/raw_data.xml}
-	\
+	\addCode{Dati Grezzi}{lst:raw_data}{XML}{Code/raw_data.xml}
+	Da questo codice possiamo vedere che i dati di partenza costituiscono semplicemente un set di informazioni o asserzioni senza alcuna struttura.
+	
+	Notiamo inoltre l'aggiunta di  un attributo che specifica il sesso della persona, facciamo questo perché uno dei nostri obbiettivi è quello di valutare i bias di rappresentazione, siamo quindi interessati a verificare se i soggetti  di un certo sesso vengono associati a certi verbi più o meno frequentemente dei soggetti del sesso opposto.
