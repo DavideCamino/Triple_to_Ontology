@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<information>
+  <info>
+    <subject>Leonardo da Vinci</subject>
+    <verb>painted</verb>
+    <complement>the Mona Lisa</complement>
+    <sex>M</sex>
+  </info>
+  <info>
+    <subject>Jane Austen</subject>
+    <verb>wrote</verb>
+    <complement>Pride and Prejudice</complement>
+    <sex>F</sex>
+  </info>
+</information>

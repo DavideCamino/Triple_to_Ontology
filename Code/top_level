@@ -1,0 +1,7 @@
+include "Info_to_ont.cd";;
+
+let infos :? Information = load_xml "Info.xml";;
+
+let ont = info_to_ont infos;;
+
+dump_to_file_utf8 "out.xml" (print_xml_utf8 ont);;
