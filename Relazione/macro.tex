@@ -1,3 +1,4 @@
+\usepackage[a4paper, top=2cm, bottom=2cm, left=2.5cm, right=2.5cm]{geometry}
 \usepackage{listings}
 \usepackage{minted}
 \usepackage{xspace}
@@ -5,6 +6,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[none]{hyphenat}
+\usepackage{dirtytalk}
 
 \sloppy
 
@@ -17,4 +19,4 @@
 		\label{#2}
 	\end{listing}
 	\vspace{-.5cm}
-	\inputminted[tabsize=2, linenos, breaklines, bgcolor=bg]{#3}{"#4"}}
+	\inputminted[tabsize=2, linenos, breaklines, bgcolor=bg, fontsize=\normalsize]{#3}{"#4"}}

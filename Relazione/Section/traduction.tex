@@ -1,0 +1,25 @@
+\section{Traduzione}
+	Presentiamo il codice per tradurre le triple di partenza nei due formati presentati. Discutiamo delle implicazioni delle due traduzioni in seguito
+	\subsection{RDF/XML}
+		\addCode{RDF/XML persona}{lst:info_to_pers_rdf}{ocaml}{Code/info_to_pers_rdf.cd}
+		Applicato questa funzione alla prima informazione del Listato \ref{lst:raw_data} oteniamo:
+		\addCode{Traduzione persona RDF}{trad_pers_rdf}{XML}{Code/trad_pers_rdf.xml}
+		Con questo codice trasformiamo un elemento di tipo \texttt{Info} in un elemento di tipo \texttt{Individual},cioè passiamo da una tripla a un individuo della classe persone. Per completare la traduzione abbiamo poi bisogno di un'altra funzione per trasfomrmare i complementi in induvidui.
+		
+		Vediamo che in questo formalismo descriviamo l'azione che collega il soggetto al complemento nello stesso elemento XML che descrive anche la persona. Questo permette una sintassi più compatta e leggibile, ma ci costringe a conoscere a prescindere tutti i verbi che possono collegare un soggetto a un complemento (elencati da riga 7 a 13 del Listato \ref{lst:info_to_pers_rdf}), tutti i verbi non contemplati possono essere mappati in un solo verbo, perdendo però la specificità dell'azione.
+		
+		La ragione per cui si devono conoscere i verbi è dovuta al fatto che in questo formalismo il tipo di azione è rappresentato da tag, come abbiamo accennato questi elementi sono di tipo \texttt{Atom}, gli elementi di questo tipo rappresentano la struttura ad albero del documento XML e non possono essere creati durante l'esecuzione del programma perché non si potrebbe garantire la correttezza della trasformazione a nel momento della compilazione.
+	\subsection{OWL/XML}
+		\addCode{RDF/XML persona}{lst:info_to_pers_rdf}{ocaml}{Code/info_to_pers_rdf.cd}
+		Applicato questa funzione alla prima informazione del Listato \ref{lst:raw_data} oteniamo:
+		\addCode{Traduzione persona RDF}{trad_pers_rdf}{XML}{Code/trad_pers_rdf.xml}
+		Come si vede in questo caso separiamo la descrizione della persona, da quella dell'azione da quella del complemento, In questo formalismo le azioni non devono essere note a priori, essendo l'azione il valore di un elemento del record e non più un tag.
+		
+		 Come si vede dalla traduzione questo formalismo disperde di più le informazioni e risulta di conseguenza più verboso e meno comprensibile, il vantaggio, come accennato prima è quello di poter descrivere una qualsiasi azione con precisione senza dover conoscere tutte le azioni a priori. Questo formalismo risulta più espressivo e generale; offre la possibilità di descrivere manipolazioni in modo più flessibile con \cduce continuando comunque a poter beneficiare del cotnrollo statico sui tipi offerto dal linguaggio.
+		 
+	\subsection{Differenze}
+		Possiamo individuare la differenza principale tra i due formati nella gestione delle relazioni tra soggetto e complemento:
+		\begin{itemize}
+			\item \textbf{RDF}: in questo formato è il soggetto l'elemento principale della nostra descrizione, tra i vari elementi che descrivono il soggetto abbiamo i campi che riguardano le relazioni a cui il soggetto partecipa, in questo senso è il soggetto che è collegato tramite un'azione al complemento. Questo approccio è dovuto al fatto che RDF è un formalismo più di basso livello in cui le relazioni non sono la parte centrale della descrizioni degli individui
+			\item \textbf{OWL}: questo formato invece pone enfasi sulle relazioni che si instaurano tra gli individui descritti nell'ontologia; soggetto e complemento sono individui separati e indipendent. L'azione che in questo formato è l'elemento principale della descrizione ed è collegata al soggetto e al complemento in modo da unirli.
+		\end{itemize}

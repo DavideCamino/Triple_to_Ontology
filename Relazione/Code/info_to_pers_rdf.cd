@@ -1,0 +1,19 @@
+let fun info_to_pers (Info -> Individual)
+  <info>[ <subject> sub <verb> v <complement> comp <sex> s ] ->
+    let ab = base @ "#" @ sub in
+    let class_res = base @ "#Person" in
+    let prop_res = base @ "#" @ comp in
+    let prop = match v with
+      | "painted" -> <ontology:painted rdf:resource=prop_res> []
+      | "wrote" -> <ontology:wrote rdf:resource=prop_res> []
+      | "discovered" -> <ontology:discovered rdf:resource=prop_res> []
+      | "invented" -> <ontology:invented rdf:resource=prop_res> []
+      | "married" -> <ontology:married rdf:resource=prop_res> []
+      | "built" -> <ontology:built rdf:resource=prop_res> []
+      | _ -> <ontology:action rdf:resource=prop_res> []
+    in
+    <owl:NamedIndividual rdf:about=ab> [
+      <rdf:type rdf:resource=class_res> []
+      prop
+      <rdfs:comment>s
+    ]

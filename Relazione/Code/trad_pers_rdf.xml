@@ -1,0 +1,5 @@
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontology#Leonardo_da_Vinci">
+	<rdf:type rdf:resource="http://www.semanticweb.org/ontology#Person"/>
+	<ontology:painted rdf:resource="http://www.semanticweb.org/ontology#the_Mona_Lisa"/>
+	<rdfs:comment>M</rdfs:comment>
+</owl:NamedIndividual>

@@ -1,0 +1,14 @@
+\section{Linguaggio}
+	Il linguaggio di programmazione scelto per la traduzione è \cduce, un linguaggio di programmazione funzionale general porpouse sviluppato appositamente per manipolare documenti XML.
+	
+	\cduce è in grado di fare il parsing della struttura ad albero di un documento XML in modo molto intiutivo, ogni elemento XML avrà la forma $<(tag) (attr)>content$ dove $tag$, $attr$ e $content$ sono espressioni del linguaggio, in particolare essendo \cduce formetmente tipato qualsiasi elemento XML è del tipo \mintinline{ocaml}| <(Atom) ({..})>[Any*]|.
+	
+	Riportiamo qui alcune caratteristiche dei tipi citati, perché sono importanti per comprendere le scelte di progettazioni future
+	\begin{itemize}
+		\item \textbf{Atom}: sono elementi simbolici, vengono usati per specificare i nomi dei tag XML e seguono le stesse regole per gli identificatori delle variabili
+		\item \textbf{Record ({..})}: sono set finiti di (nome, valore) dove i nomi sono label che seguono le stesse convenzioni degli identificatori e i valori sono espressioni
+		\item \textbf{Sequences [Any*]}: sono un elemento fondamentale della sintassi di \cduce, servono per rappresentare le stringhe di caratteri e il contenuto degli elementi XML. Nonostante la centralità delle liste queste sono solo zucchero sintattico per il tipo Pair )(coppie)
+	\end{itemize}
+	Usiamo questo linguaggio per le garnzie offetre in fase di compilazione in modo da essere sicuri che le funzioni che scriviamo per trasformare elementi ci permenttano di ottenere esattamente il tipo di dato desiderato.
+	
+	\cduce ci permette di descrivere con precisione la stuttura del documento XML di partenza e quella del docimento di arrivo, le funzioni che mapperanno gli input negli ouutput saranno controllate in fase di compilazione e questo ci assicura che la traduzione avvenga coerentemente con i tipi che abbiamo usato per descrivere i documenti.
