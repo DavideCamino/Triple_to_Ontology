@@ -10,9 +10,9 @@
 		
 		La ragione per cui si devono conoscere i verbi è dovuta al fatto che in questo formalismo il tipo di azione è rappresentato da tag, come abbiamo accennato questi elementi sono di tipo \texttt{Atom}, gli elementi di questo tipo rappresentano la struttura ad albero del documento XML e non possono essere creati durante l'esecuzione del programma perché non si potrebbe garantire la correttezza della trasformazione a nel momento della compilazione.
 	\subsection{OWL/XML}
-		\addCode{RDF/XML persona}{lst:info_to_pers_rdf}{ocaml}{Code/info_to_pers_rdf.cd}
+		\addCode{OWL/XML informazione}{lst:info_to_ont_owl}{ocaml}{Code/info_to_ont_owl.cd}
 		Applicato questa funzione alla prima informazione del Listato \ref{lst:raw_data} oteniamo:
-		\addCode{Traduzione persona RDF}{trad_pers_rdf}{XML}{Code/trad_pers_rdf.xml}
+		\addCode{Traduzione informazione OWL}{trad_info_owl}{XML}{Code/trad_owl.xml}
 		Come si vede in questo caso separiamo la descrizione della persona, da quella dell'azione da quella del complemento, In questo formalismo le azioni non devono essere note a priori, essendo l'azione il valore di un elemento del record e non più un tag.
 		
 		 Come si vede dalla traduzione questo formalismo disperde di più le informazioni e risulta di conseguenza più verboso e meno comprensibile, il vantaggio, come accennato prima è quello di poter descrivere una qualsiasi azione con precisione senza dover conoscere tutte le azioni a priori. Questo formalismo risulta più espressivo e generale; offre la possibilità di descrivere manipolazioni in modo più flessibile con \cduce continuando comunque a poter beneficiare del cotnrollo statico sui tipi offerto dal linguaggio.

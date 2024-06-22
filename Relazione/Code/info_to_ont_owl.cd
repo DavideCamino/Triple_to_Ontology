@@ -1,0 +1,15 @@
+let fun info_to_ont (Info -> InfoOnt)
+  <info>[ <subject> sub <verb> v <complement> comp <sex> s ] ->
+    let subj = "#" @ sub in
+    [<Declaration> [<NamedIndividual IRI=("#"@sub)> []]
+    <Declaration> [<NamedIndividual IRI=("#"@comp)> []]
+    <Declaration> [<ObjectProperty IRI=("#"@v)> []]
+    <ClassAssertion> [<Class IRI=("#Person")> [] <NamedIndividual IRI=("#"@sub)> []]
+    <ClassAssertion> [<Class IRI=("#Complement")> [] <NamedIndividual IRI=("#"@comp)> []]
+    <ObjectPropertyAssertion> [<ObjectProperty IRI=("#"@v)>[] 
+                                <NamedIndividual IRI=("#"@sub)> [] 
+                                <NamedIndividual IRI=("#"@comp)> []]
+    <AnnotationAssertion> [<AnnotationProperty abbreviatedIRI="rdfs:comment"> []
+                            <IRI> subj
+                            <Literal> s]]
+    

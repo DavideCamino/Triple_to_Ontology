@@ -1,0 +1,27 @@
+<Declaration>
+  <NamedIndividual IRI="#Leonardo_da_Vinci"/>
+</Declaration>
+<Declaration>
+  <NamedIndividual IRI="#the_Mona_Lisa"/>
+</Declaration>
+<Declaration>
+  <ObjectProperty IRI="#painted"/>
+</Declaration>
+<ClassAssertion>
+  <Class IRI="#Person"/>
+  <NamedIndividual IRI="#Leonardo_da_Vinci"/>
+</ClassAssertion>
+<ClassAssertion>
+  <Class IRI="#Complement"/>
+  <NamedIndividual IRI="#the_Mona_Lisa"/>
+</ClassAssertion>
+<ObjectPropertyAssertion>
+  <ObjectProperty IRI="#painted"/>
+  <NamedIndividual IRI="#Leonardo_da_Vinci"/>
+  <NamedIndividual IRI="#the_Mona_Lisa"/>
+</ObjectPropertyAssertion>
+<AnnotationAssertion>
+  <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+  <IRI>#Leonardo_da_Vinci</IRI>
+  <Literal>M</Literal>
+</AnnotationAssertion>

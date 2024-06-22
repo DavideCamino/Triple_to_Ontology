@@ -1,5 +1,5 @@
-include "InfoStruct.cd";;
-include "Ont.cd";;
+include "info_struct.cd";;
+include "ont_rdf_struct.cd";;
 namespace ontology="http://www.semanticweb.org/ontology#";;
 
 let base = "http://www.semanticweb.org/ontology";;
