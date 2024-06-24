@@ -1,0 +1,7 @@
+include "ont_rdf_struct.cd";;
+
+let ont :? Ontology = load_xml "../XML/ont_rdf.xml"
+
+let painter =
+let ind = select [ont]/Individual in
+tranform ind with -> x
