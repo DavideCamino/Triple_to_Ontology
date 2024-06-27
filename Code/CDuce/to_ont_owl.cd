@@ -24,9 +24,7 @@ let fun info_to_ont (Information -> Ontology)
     let people = <Declaration> [<Class IRI="#Person"> []] in
     let comp = <Declaration> [<Class IRI="#Complement"> []] in
     let base_str = "http://www.semanticweb.org/ontology" in
-    <Ontology xmlns="http://www.w3.org/2002/07/owl#" 
-    xml:base=base_str
-    ontologyIRI="http://www.semanticweb.org/ontology">
+    <Ontology ontologyIRI="http://www.semanticweb.org/ontology">
     (
       [<Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"> []] @
       [<Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"> []] @

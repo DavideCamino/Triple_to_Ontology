@@ -1,6 +1,4 @@
-namespace xml="http://www.w3.org/XML/1998/namespace"
-
-type Ontology = <Ontology xmlns=String xml:base=String ontologyIRI=String> [ Thing * ]
+type Ontology = <Ontology ontologyIRI=String> [ Thing * ]
 type Thing = Prefix | Declaration | ClassAssertion | ObjectPropertyAssertion | AnnotationAssertion
 
 type Prefix = <Prefix name=String IRI=String> []

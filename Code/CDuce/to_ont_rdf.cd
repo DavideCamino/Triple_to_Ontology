@@ -55,7 +55,7 @@ let fun info_to_ont (Information -> Ontology)
   <information> x -> 
     let people = infos_to_people x in
     let compl = info_to_compl x in
-    <rdf:RDF xmlns=base xml:base=base> (
+    <rdf:RDF> (
       [<owl:Ontology rdf:about=base> []] @
       [pers_class] @
       [compl_class] @

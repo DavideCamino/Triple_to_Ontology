@@ -1,6 +1,6 @@
 include  "ont_owl_struct.cd";;
 
-let ont :? Ontology = load_xml "../XML/ont_owl.owx";;
+let ont :? Ontology = load_xml "../XML/owl_protege.owx";;
 
 let painter = select x 
               from x in [ont]/ObjectPropertyAssertion,
