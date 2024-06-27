@@ -15,20 +15,19 @@
 		
 		In questo formato(RDF) siamo costretti a conoscere le azioni che possono collogare soggetti a complementi a priori, questo significa che l'atomo \mintinline{ocaml}|ontology:painted| deve essere noto e codificato nel  programma. 
 		
-	\subsubsection{\cduce \& OWL}
+	\subsection{\cduce \& OWL}
 		Se il formato dell'ontologia che vogliamo manipolare è OWL possiamo scrivere la funzione di ricerca in questo modo:
-		\addCode{Painter RDF}{lst:query_owl}{ocaml}{Code/query_owl.cd}
+		\addCode{Painter OWL}{lst:query_owl}{ocaml}{Code/query_owl.cd}
 		La struttura della quey è molto simile alla precedente, in questo caso potevamo scegliere di visualizzae solo la dichiarazione dell'individuo pittore, ma abbiamo deciso di visualizzare invece la relazione che collega la persona al complemento, questo rende ancora più snella la query e ci permette comunque di conoscere l'IRI associato al pittore.
+	\subsection{Differenze}
+		Nel secondo caso non è necessrio fare il match, in quanto non stiamo confrontando il tipo di un elemento con quello che stiamo cercando, ma sappiamo esattamente come questo elemento è fatto, quindi è sufficiente la clausola di uguaglianza. Nonostante questo concetto di uguaglianza sembri essere più stringente del concetto di match la seconda query è più flessibile, perché l'elemento che specifica il tipo di azione non è più un atomo, ma un valore che può quindi essere generato \say{runtime}. La differenza con la query che lavora sul formato RDF è che quella in OWL può essere inclusa in una funzione che accetti come parametro una stringa (stringa che rappresenta l'azione che stiamo cercando) rendendola di fatto molto più flessibile.
 		
-		In questo caso non è necessrio fare il match, in quanto non stiamo confrontando il tipo di un elemento con quello che stiamo cercando, ma sappiamo esattamente come questo elemento è fatto, quindi è sufficiente la clausola di uguaglianza. Nonostante questo concetto di uguaglianza sembri essere più stringente del concetto di match questa query è più flessibile, perché l'elemento che specifica il tipo di azione non è più un atomo, ma un valore che può quindi essere generato. La differenza con la query presentata prima è che questa può essere inclusa in una funzione che accetti come parametro una stringa (stringa che rappresenta l'azione che stiamo cercando) rendendola di fatto molto più flessibile.
-		
-		Per contro in questo formato abbiamo dovuto decidere arbitrariamente cosa la query avrebbe dovuto restituire, infatti mentre prima il risultato ovvio della query era una lista di individui qui potevamo decidere tra
+		Per contro nel formato OWL abbiamo dovuto decidere arbitrariamente cosa la query avrebbe dovuto restituire, infatti mentre nella prima query il risultato ovvio era una lista di individui nella seconda potevamo decidere tra:
 		\begin{itemize}
 			\item Lista di associazioni (quello che abbiamo effettivamente fatto);
 			\item Lista di individui che però non ci avrebbero dato informazioni sull'oggetto dipinto;
 			\item Combinare le due precedenti eventualmente aggiungendo anche il sesso dell'individuo. Questa sarebbe stata la risposta più completa alla nostra domanda; ma avrebbe complicato notevolmente la query.
 		\end{itemize}
-		
-		Per quanto riguarda le query quindi questo formato ci permette di essere più flessibili  nella ricerca, ma il fatto che le informazioni siano molto sparse complica notevolmente la costruzione della risposta.
+		Riassumendo: per quanto riguarda le query quindi il formato OWL ci permette di essere più flessibili  nella ricerca, ma il fatto che le informazioni siano molto sparse complica notevolmente la costruzione della risposta.
 		
 		
