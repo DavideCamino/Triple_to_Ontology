@@ -1,0 +1,34 @@
+\section{Manipolazione}
+	Ora che abbiamo ottenuto delle ontologie dalle informazioni partenza possiamo fare in modo da sfruttare la struttura formale per poter fare inferenza sui dati, manipolarli e cercare informazioni in modo più efficace rispetto al set di partenza.
+	
+	In questa sezione mostriamo come implementare una semplice query per cercare tutti i pittori nella nostra ontologia, sfruttiamo questo esempio molto semplice per confrontare 3 differenti approcci, che sfruttino l'iontologia appena creata.
+	\subsection{Description Logic}
+		Dato che abbiamo ottenuto un'ontologia (a prescindere che sia in formato RDF o WOWL) possiamo adesso sfruttare strumenti molto potensi sviluppati appositamente per lavorare su queste rappresentazioni formali dei concetti. In questo esempio sfruttiamo Protegé e uno dei reasoner offerti da quest'ultimo (HermiT). Grazie al reasoner possiamo interrogare l'ontologia attraverso delle query in Description Logic (DL). Per trovare tutti i pittori ad esempio possiamo semplicemente chidere:\\
+		\texttt{painted \color{purple}some\color{black}}\\
+		e otterremo come risposta tutti gli individui che partecipano alla relazione \say{painted}
+	\subsection{\cduce \& RDF}
+		Vediamo ora come sia possibile ottenere le stesse informazioni utilizzando \cduce  partendo da un'ontologia in formato RDF attraverso una query. 
+		
+		Le query offerte da \cduce sono un potente strumento per cercare informazioni e potenzialmente anche manipolarle. Ricordano molto la sintassi delle query SQL e da queste ereditano anche le tecniche di ottimizzazione basate sulla logica SQL; quando andremo a scrivere una query quindi questa sarà automaticamente ottimizzata. Formalmente tutto ciò che esprimiamo con una query può essere ottenuto con una funzione che si basi sulle \mintinline{ocaml}|transform|, una funzione di questo genere però non trarrebbe vantaggio dall'ottimizzazione.
+		\addCode{Painter RDF}{lst:query_rdf}{ocaml}{Code/query_rdf.cd}
+		Questo codice ci permette di ottenere la lista delle persone che partecipano alla relazione \say{painted}; in particolare chiediamo una lista di individui, poi selezioniamo solo gli individui che abbiano una proprietà che faccia il match con l'elemento specificato a linea 6, tutto ciò che non fa il match (catturato dalla wildCard \say{\_}) falsifica la clausola \mintinline{ocaml}|where|
+		
+		In questo formato(RDF) siamo costretti a conoscere le azioni che possono collogare soggetti a complementi a priori, questo significa che l'atomo \mintinline{ocaml}|ontology:painted| deve essere noto e codificato nel  programma. 
+		
+	\subsubsection{\cduce \& OWL}
+		Se il formato dell'ontologia che vogliamo manipolare è OWL possiamo scrivere la funzione di ricerca in questo modo:
+		\addCode{Painter RDF}{lst:query_owl}{ocaml}{Code/query_owl.cd}
+		La struttura della quey è molto simile alla precedente, in questo caso potevamo scegliere di visualizzae solo la dichiarazione dell'individuo pittore, ma abbiamo deciso di visualizzare invece la relazione che collega la persona al complemento, questo rende ancora più snella la query e ci permette comunque di conoscere l'IRI associato al pittore.
+		
+		In questo caso non è necessrio fare il match, in quanto non stiamo confrontando il tipo di un elemento con quello che stiamo cercando, ma sappiamo esattamente come questo elemento è fatto, quindi è sufficiente la clausola di uguaglianza. Nonostante questo concetto di uguaglianza sembri essere più stringente del concetto di match questa query è più flessibile, perché l'elemento che specifica il tipo di azione non è più un atomo, ma un valore che può quindi essere generato. La differenza con la query presentata prima è che questa può essere inclusa in una funzione che accetti come parametro una stringa (stringa che rappresenta l'azione che stiamo cercando) rendendola di fatto molto più flessibile.
+		
+		Per contro in questo formato abbiamo dovuto decidere arbitrariamente cosa la query avrebbe dovuto restituire, infatti mentre prima il risultato ovvio della query era una lista di individui qui potevamo decidere tra
+		\begin{itemize}
+			\item Lista di associazioni (quello che abbiamo effettivamente fatto);
+			\item Lista di individui che però non ci avrebbero dato informazioni sull'oggetto dipinto;
+			\item Combinare le due precedenti eventualmente aggiungendo anche il sesso dell'individuo. Questa sarebbe stata la risposta più completa alla nostra domanda; ma avrebbe complicato notevolmente la query.
+		\end{itemize}
+		
+		Per quanto riguarda le query quindi questo formato ci permette di essere più flessibili  nella ricerca, ma il fatto che le informazioni siano molto sparse complica notevolmente la costruzione della risposta.
+		
+		

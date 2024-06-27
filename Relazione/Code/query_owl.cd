@@ -1,0 +1,4 @@
+let painter = select x 
+              from x in [ont]/ObjectPropertyAssertion,
+                   y in [x]/ObjectProperty
+              where (y = <ObjectProperty IRI="#painted">[])

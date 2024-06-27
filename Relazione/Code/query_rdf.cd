@@ -1,0 +1,8 @@
+let painter = select x 
+              from x in [ont]/Individual,
+                   y in [x]/IndProp
+              where (
+                match y with
+                | <ontology:painted ..>[] -> `true
+                | _ -> `false
+              )
